@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 
-app.post('/', async function (req, res) {
+app.post('/todos', async function (req, res) {
 	const payload = req.body;
 	const parserdPayload = createTodo.safeParse(payload);
 
@@ -30,7 +30,7 @@ app.post('/', async function (req, res) {
 	});
 });
 
-app.get('/todos', async function () {
+app.get('/todos', async function (req, res) {
 	const allTodos = await todos.find();
 	res.json(allTodos);
 });
