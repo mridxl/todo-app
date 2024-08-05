@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 mongoose.connect(
-	'mongodb+srv://mridxl:P@ssw0rd@cluster0.vnzqjfw.mongodb.net/Todo-app'
+	'mongodb+srv://mridxl:P%40ssw0rd@cluster0.vnzqjfw.mongodb.net/todos'
 );
 /***
  * todo {
