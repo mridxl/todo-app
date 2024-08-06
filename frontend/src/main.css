@@ -145,7 +145,7 @@ body {
     cursor: pointer;
 }
 
-.toDoList>button {
+.toDoList>*>button {
     background: none;
     color: inherit;
     border: none;

@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+
 const { createTodo, updateTodo } = require('./types');
 const { todos } = require('./db');
 
@@ -6,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/todos', async function (req, res) {
 	const payload = req.body;
