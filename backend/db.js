@@ -6,7 +6,7 @@ mongoose.connect(
 );
 /***
  * todo {
- *      title: string,
+ *    
  *      description: string,
  *      completed: boolean
  *  }
@@ -14,7 +14,6 @@ mongoose.connect(
 
 // create a new schema
 const todoSchema = new Schema({
-	title: String,
 	description: String,
 	completed: Boolean,
 });

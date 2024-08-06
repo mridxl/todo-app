@@ -20,7 +20,6 @@ app.post('/todos', async function (req, res) {
 
 	//put it in db
 	await todos.create({
-		title: payload.title,
 		description: payload.description,
 		completed: false,
 	});
