@@ -70,7 +70,7 @@ body {
     border: solid 3px transparent;
     border-bottom: dashed 3px #ea95e0;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: hsla(260, 2%, 25%, 0.7);
     width: 70%;
     margin-bottom: 20px;
@@ -79,7 +79,6 @@ body {
 .input-box:focus {
     outline: none;
     border: solid 3px #ea95e0;
-
 }
 
 @media only screen and (min-width: 500px) {
@@ -94,7 +93,7 @@ body {
     transform: rotate(4deg);
     transform-origin: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
     padding-bottom: 3px;
     margin-left: 10px;
@@ -122,13 +121,37 @@ body {
 
 .toDoList {
     text-align: left;
+}
 
-    li {
-        position: relative;
-        padding: 0.5rem;
-    }
+.todo-desc:hover {
+    text-decoration: line-through wavy rgb(85, 76, 136);
+}
 
-    li:hover {
-        text-decoration: line-through wavy #24bffb;
-    }
+.todo-completed {
+    text-decoration: line-through wavy rgb(85, 76, 136);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.todo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.todo-desc {
+    display: inline;
+    position: relative;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.toDoList>button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: default;
+    margin: 0;
+    display: inline;
 }

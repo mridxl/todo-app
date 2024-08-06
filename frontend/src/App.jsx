@@ -1,19 +1,32 @@
 import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
-import './main.css'
+import Header from './components/Header';
+import './main.css';
+import { useState } from 'react';
 
 function App() {
+	const [todos, setTodo] = useState([
+		{
+			description: 'This is a sample task',
+			completed: false,
+		},
+		{
+			description: 'You can click a task to mark it as completed',
+			completed: false,
+		},
+		,
+		{
+			description: 'This is a completed task',
+			completed: true,
+		},
+	]);
 	return (
 		<>
 			<section className="container">
-				<div className="heading">
-					<img className="heading-img" src='./src/laptop.png'/>
-					<h1 className="heading-title">To-Do List</h1>
-				</div>
-
+				<Header />
 				<div>
 					<CreateTodo />
-					<TodoList />
+					<TodoList todos={todos} />
 				</div>
 			</section>
 		</>
