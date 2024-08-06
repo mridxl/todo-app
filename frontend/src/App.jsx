@@ -4,35 +4,20 @@ import './main.css';
 import { useState, useEffect } from 'react';
 
 function App() {
-	const init = [
-		{
-			description: 'This is a sample task',
-			completed: false,
-		},
-		{
-			description: 'You can click a task to mark it as completed',
-			completed: false,
-		},
-		,
-		{
-			description: 'This is a completed task',
-			completed: true,
-		},
-	];
+	const [todoList, setTodo] = useState([]);
+
 	useEffect(() => {
-		try {
-			async function fetchTodo() {
+		async function fetchTodo() {
+			try {
 				const res = await fetch('http://localhost:8080/todos');
 				const json = await res.json();
 				setTodo(json);
+			} catch (error) {
+				alert(error);
 			}
-			fetchTodo();
-		} catch (error) {
-			alert(error);
 		}
-	});
-
-	const [todoList, setTodo] = useState([]);
+		fetchTodo();
+	}, []);
 
 	return (
 		<>
@@ -44,8 +29,15 @@ function App() {
 						{todoList &&
 							todoList.map((todo) => {
 								return (
-									<li className={todo.completed ? 'todo-completed' : 'todo'} id={todo._id}>
-										<button onClick={completeTodo}>
+									<li
+										className={todo.completed ? 'todo-completed' : 'todo'}
+										key={todo._id}
+									>
+										<button
+											onClick={() => {
+												completeTodo(todo._id, setTodo);
+											}}
+										>
 											<p className="todo-desc">{todo.description}</p>
 										</button>
 									</li>
@@ -58,8 +50,24 @@ function App() {
 	);
 }
 
-function completeTodo(){
-
+function completeTodo(id, setTodo) {
+	try {
+		fetch('http://localhost:8080/completed', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ id }),
+		}).then(() => {
+			setTodo((prevTodos) =>
+				prevTodos.map((todo) =>
+					todo._id === id ? { ...todo, completed: !todo.completed } : todo
+				)
+			);
+		});
+	} catch (error) {
+		alert('An error occurred while updating the todo');
+	}
 }
 
 export default App;

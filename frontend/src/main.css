@@ -123,10 +123,6 @@ body {
     text-align: left;
 }
 
-.todo-desc:hover {
-    text-decoration: line-through wavy rgb(85, 76, 136);
-}
-
 .todo-completed {
     text-decoration: line-through wavy rgb(85, 76, 136);
     margin-top: 10px;
