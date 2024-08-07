@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const dbConnectionString =
+	'mongodb+srv://mridxl:P%40ssw0rd@cluster0.vnzqjfw.mongodb.net/todos';
 
-mongoose.connect(
-	'mongodb+srv://mridxl:P%40ssw0rd@cluster0.vnzqjfw.mongodb.net/todos'
-);
+mongoose.connect(dbConnectionString);
 /***
  * todo {
- *    
+ *
  *      description: string,
  *      completed: boolean
  *  }
