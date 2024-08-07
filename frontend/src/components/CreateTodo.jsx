@@ -1,4 +1,3 @@
-console.log(process);
 const PORT = 8080;
 
 function CreateTodo({ todos, setTodo }) {
