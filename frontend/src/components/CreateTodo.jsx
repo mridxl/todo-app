@@ -1,3 +1,6 @@
+console.log(process);
+const PORT = 8080;
+
 function CreateTodo({ todos, setTodo }) {
 	return (
 		<>
@@ -20,7 +23,7 @@ function CreateTodo({ todos, setTodo }) {
 					const reqBody = JSON.stringify({
 						description: elem.value,
 					});
-					fetch('http://localhost:8080/todos', {
+					fetch(`http://localhost:${PORT}/todos`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',

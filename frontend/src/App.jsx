@@ -3,6 +3,8 @@ import Header from './components/Header';
 import './main.css';
 import { useState, useEffect } from 'react';
 
+const PORT = 8080;
+
 function App() {
 	return (
 		<>
@@ -19,7 +21,7 @@ function Todos() {
 	useEffect(() => {
 		async function fetchTodo() {
 			try {
-				const res = await fetch('http://localhost:8080/todos');
+				const res = await fetch(`http://localhost:${PORT}/todos`);
 				const json = await res.json();
 				setTodo(() => json);
 			} catch (error) {
@@ -63,7 +65,7 @@ function TodoItem({ todoList, setTodo }) {
 
 function completeTodo(id, setTodo) {
 	const reqBody = JSON.stringify({ id });
-	fetch('http://localhost:8080/completed', {
+	fetch(`http://localhost:${PORT}/completed`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',
