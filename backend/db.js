@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const dbConnectionString =
-	'mongodb+srv://mridxl:P%40ssw0rd@cluster0.vnzqjfw.mongodb.net/todos';
+	'<mongodb connection url here>';
 
 mongoose.connect(dbConnectionString);
 /***
