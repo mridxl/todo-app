@@ -12,6 +12,7 @@ function CreateTodo({ todos, setTodo }) {
 				onClick={() => {
 					const elem = document.querySelector('.input-box');
 					const newTodo = {
+						_id: 0,
 						description: elem.value,
 						completed: false,
 					};
@@ -19,17 +20,23 @@ function CreateTodo({ todos, setTodo }) {
 					const reqBody = JSON.stringify({
 						description: elem.value,
 					});
-
 					fetch('http://localhost:8080/todos', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 						},
 						body: reqBody,
-					}).then(() => {
-						const newTodolist = [...todos, newTodo];
-						setTodo(newTodolist);
-					});
+					})
+						.then((Response) => {
+							if (!Response.ok) {
+								alert('An error occurred while created the todo');
+								throw new Error('Error errored while creating the todo');
+							}
+						})
+						.then(() => {
+							const newTodolist = [...todos, newTodo];
+							setTodo(() => newTodolist);
+						});
 					elem.value = '';
 				}}
 			>
