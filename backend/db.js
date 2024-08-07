@@ -6,7 +6,6 @@ const dbConnectionString =
 mongoose.connect(dbConnectionString);
 /***
  * todo {
- *
  *      description: string,
  *      completed: boolean
  *  }

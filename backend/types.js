@@ -4,7 +4,7 @@ const zod = require('zod');
  *   {
  *       description : string
  *   }
- *   Delete:
+ *   Complete:
  *   {
  *       id : string
  *   }
