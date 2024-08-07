@@ -2,7 +2,6 @@ const zod = require('zod');
 
 /* Todo:
  *   {
- *       title: string
  *       description : string
  *   }
  *   Delete:

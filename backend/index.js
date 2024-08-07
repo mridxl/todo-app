@@ -15,7 +15,7 @@ app.post('/todos', async function (req, res) {
 	const parserdPayload = createTodo.safeParse(payload);
 
 	if (!parserdPayload.success) {
-		res.status(411).json({
+		res.status(400).json({
 			msg: `Validation error: ${parserdPayload.error}`,
 		});
 		return;
@@ -42,7 +42,7 @@ app.put('/completed', async function (req, res) {
 	const parserdPayload = updateTodo.safeParse(payload);
 
 	if (!parserdPayload.success) {
-		res.status(411).json({
+		res.status(400).json({
 			msg: `Validation error: ${parserdPayload.error}`,
 		});
 		return;
