@@ -49,10 +49,10 @@ app.put('/completed', async function (req, res) {
 	}
 
 	// change todo completed status
-	await todos.updateOne({ _id: req.body.id }, { completed: true });
+	await todos.updateOne({ _id: req.body.id }, { completed: !req.body.completed });
 
 	res.json({
-		msg: 'todo completed',
+		msg: 'todo updated',
 	});
 });
 

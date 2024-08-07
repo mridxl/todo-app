@@ -51,7 +51,7 @@ function TodoItem({ todoList, setTodo }) {
 						>
 							<button
 								onClick={() => {
-									completeTodo(todo._id, setTodo);
+									completeTodo(todo, setTodo);
 								}}
 							>
 								<p className="todo-desc">{todo.description}</p>
@@ -63,8 +63,11 @@ function TodoItem({ todoList, setTodo }) {
 	);
 }
 
-function completeTodo(id, setTodo) {
-	const reqBody = JSON.stringify({ id });
+function completeTodo(todoItem, setTodo) {
+	const reqBody = JSON.stringify({ 
+		id: todoItem._id,
+		completed: todoItem.completed
+	 });
 	fetch(`http://localhost:${PORT}/completed`, {
 		method: 'PUT',
 		headers: {
@@ -81,7 +84,7 @@ function completeTodo(id, setTodo) {
 		.then(() => {
 			setTodo((prevTodos) =>
 				prevTodos.map((todo) =>
-					todo._id === id ? { ...todo, completed: !todo.completed } : todo
+					todo._id === todoItem._id ? { ...todo, completed: !todo.completed } : todo
 				)
 			);
 		});
